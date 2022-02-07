@@ -1,0 +1,30 @@
+*{
+    margin-top: 10px;
+    /* margin: 0 auto;
+    width: 40%; */
+}
+.in{
+    width: 40%;
+    margin: 0 auto;
+    padding: 10px 10px 10px 10px ;
+}
+input[type="text" i] {
+    padding: 5px 20px;
+    margin-left: 20px;
+}
+input[type="number" i] {
+    padding: 5px 20px;
+    margin-left: 20px;
+}
+button{
+    display: block;
+    margin: 10px 60% 0px 30%;
+    padding: 10px 20px;
+}
+#age{
+    margin-left: 30px;
+}
+#para{
+    width: 60%;
+    margin: 20px 20% 0px 28% ;
+}
