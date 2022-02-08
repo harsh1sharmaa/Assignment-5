@@ -10,15 +10,21 @@ function fun() {
     let para = document.getElementById("para");
     console.log(para);
     console.log(checkData(id, name, price));
-    if (checkData(id, name, price)) {
+    console.log("id" + checkId(id));
+    if (checkData(id, name, price) && checkId(id)) {
         para.innerHTML = "";
         console.log("addcll");
         addValue(id, name, price);
         console.log("doplycll");
-        displayTble(id, name, price);
+        displayTble();
+    } else if (checkId(id) == false) {
+        para.innerText = "Enter unique Id";
+        para.style.color = "red";
+
     } else {
         console.log("e else")
         para.innerText = "enter valid field";
+        para.style.color = "red";
     }
 }
 
@@ -28,6 +34,16 @@ function checkData(id, name, price) {
     } else {
         return true;
     }
+}
+
+function checkId(id) {
+    for (let i = 0; i < data.length; i++) {
+        let obj = data[i];
+        if (obj.id == id) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function addValue(id, name, price) {
@@ -40,27 +56,39 @@ function addValue(id, name, price) {
     data.push(newdata);
 }
 
-function displayTble(id, name, price) {
+function displayTble() {
     console.log("indiply");
-    let obj = data[data.length - 1];
-    let tbl = document.getElementById("tbl");
-    let len = data.length;
-    let row = tbl.insertRow(len);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    cell1.innerHTML = obj.id;
-    cell2.innerHTML = obj.name;
-    cell3.innerHTML = obj.price;
-
-
-    myFunction();
+    let html = "<table><tr><th>product id</th><th>product name</th><th>product price</th></tr>";
+    for (let i = 0; i < data.length; i++) {
+        console.log(i);
+        html += "<tr><td>"
+            + data[i].id +
+            "</td><td>"
+            + data[i].name +
+            "</td><td>"
+            + data[i].price +
+            "</td></tr>"
+    }
+    console.log(html);
+    document.getElementById('table').innerHTML = html + "</table>";;
+    resetInput();
 }
 
-function myFunction() {
+
+
+
+function resetInput() {
     document.getElementById("id").value = "";
     document.getElementById("name").value = "";
     document.getElementById("price").value = "";
     console.log(data);
 }
 console.log(data);
+
+function fun2() {
+    let id = document.getElementById("newid").value;
+    let name = document.getElementById("newname").value;
+    let price = document.getElementById("newprice").value;
+    updateProduct(id, name, price);
+
+}
